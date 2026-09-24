@@ -26,10 +26,11 @@ def parse_clock(text):
 
 
 def parse_offset(text):
-    m = re.fullmatch(r"\+(?:(\d+)h)?(?:(\d+)m)?", text.strip().lower())
+    m = re.fullmatch(r"\+(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?", text.strip().lower())
     if not m or not any(m.groups()):
         return None
-    return timedelta(hours=int(m.group(1) or 0), minutes=int(m.group(2) or 0))
+    hours, minutes, seconds = (int(g or 0) for g in m.groups())
+    return timedelta(hours=hours, minutes=minutes, seconds=seconds)
 
 
 def parse_days(text):

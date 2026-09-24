@@ -26,6 +26,8 @@ class ParseTests(unittest.TestCase):
     def test_offset(self):
         self.assertEqual(parse_offset("+10m"), timedelta(minutes=10))
         self.assertEqual(parse_offset("+1h30m"), timedelta(hours=1, minutes=30))
+        self.assertEqual(parse_offset("+45s"), timedelta(seconds=45))
+        self.assertEqual(parse_offset("+1m30s"), timedelta(minutes=1, seconds=30))
         self.assertIsNone(parse_offset("07:30"))
         self.assertIsNone(parse_offset("+"))
 

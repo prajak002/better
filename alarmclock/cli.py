@@ -60,7 +60,7 @@ def build_parser():
     sub = parser.add_subparsers(dest="command", required=True)
 
     add = sub.add_parser("add", help="add an alarm")
-    add.add_argument("time", help="07:30, 7:30am, 6pm or an offset like +10m / +1h30m")
+    add.add_argument("time", help="07:30, 7:30am, 6pm or an offset like +10m / +1h30m / +30s")
     add.add_argument("-r", "--repeat", help="daily, weekdays, weekends or days like mon,wed,fri")
     add.add_argument("-l", "--label")
     add.set_defaults(func=cmd_add)
