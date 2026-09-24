@@ -49,18 +49,8 @@ When an alarm goes off it plays a sound (`afplay` on macOS, terminal bell elsewh
 Alarms live in `~/.alarmclock.json`. Point `ALARM_FILE` somewhere else to keep separate sets.
 
 ## How it works
+<img width="1536" height="1024" alt="ChatGPT Image Sep 24, 2026, 01_10_37 PM" src="https://github.com/user-attachments/assets/ae943284-6784-4e03-9f6f-b0b9007afcc8" />
 
-```mermaid
-flowchart LR
-    A["alarm add / list / remove"] -->|atomic write| F[("~/.alarmclock.json")]
-    F -->|reload every 1s| R["alarm run"]
-    R --> S{"state?"}
-    S -->|waiting| R
-    S -->|due| Ring["🔔 ring"] -->|Enter| D["dismiss"]
-    Ring -->|s| Z["snooze"]
-    S -->|"missed > 5 min"| K["skip"]
-    D & Z & K -->|merge by id| F
-```
 
 | Module | Responsibility |
 |---|---|
