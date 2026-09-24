@@ -1,0 +1,15 @@
+[project]
+name = "alarmclock"
+version = "0.1.0"
+description = "A small alarm clock for the terminal"
+requires-python = ">=3.10"
+
+[project.scripts]
+alarm = "alarmclock.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["alarmclock"]
